@@ -1,0 +1,29 @@
+<letter>
+    <title>
+        <description th:text="${letter.title.description}"/>
+        <theme th:attr="text=${letter.title.theme_text}"/>
+        <alien_race th:attr="code=${letter.title.alien_code}"/>
+        <created th:text="${letter.title.created}"/>
+        <id th:attr="description=${letter.title.id.description}, value=${letter.title.id.value}"/>
+        <authors>
+            <employee th:each="author : ${letter.title.authors}">
+                <name th:text="${author.name}"/>
+                <second_name th:text="${author.fatherName}"/>
+                <lastname th:text="${author.lastName}"/>
+                <position th:text="${author.position}"/>
+            </employee>
+        </authors>
+    </title>
+    <message>
+        <paragraph th:each="paragraph : ${letter.message}">
+            <text th:text="${paragraph.text}"/>
+        </paragraph>
+    </message>
+    <contacts>
+        <tel th:if="${letter.contacts.is_tel_number}" th:attr="number=${letter.contacts.tel_number}"/>
+        <address th:if="${letter.contacts.is_address_description}" th:attr="description=${letter.contacts.address_description}"/>
+
+        <value th:if="${not letter.contacts.is_tel_number and not letter.contacts.is_address_description}" th:attr="value='not found'"/>
+    </contacts>
+    <sent_time th:text="${letter.sentTime}"/>
+</letter>

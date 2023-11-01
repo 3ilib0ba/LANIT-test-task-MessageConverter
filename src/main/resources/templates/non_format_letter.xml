@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Письмо_инопланетянам xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <код_расы>
+        <value th:text="${letter.alienRace.value}"></value>
+    </код_расы>
+    <created th:attr="date_time=${letter.created}"/>
+    <uid>
+        <code>
+            <value th:text="${letter.uid.code.value}"></value>
+        </code>
+    </uid>
+    <author th:each="author : ${letter.authors}">
+        <id>
+            <value th:text="${author.id.value}"></value>
+        </id>
+    </author>
+    <document>
+        <text th:text="${letter.document.text}"></text>
+        <address>
+            <value th:text="${letter.document.address.value}"></value>
+        </address>
+        <tel>
+            <value th:text="${letter.document.tel.value}"></value>
+        </tel>
+    </document>
+</Письмо_инопланетянам>
